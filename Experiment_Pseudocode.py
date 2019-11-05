@@ -1,25 +1,7 @@
-
-# Experiment Proposal
-
-## Description
-
-Pronoun resolution is a crucial process that we employ in discourse. When we encounter a pronoun, we "resolve" it by linking it to the appropriate noun/concept within the discourse model. There are two contrasting traditions regarding pronoun resolution: in the memory-motivated tradition, pronouns reactivate information from long-term memory about form and meaning in order to link a pronoun to the correct antecedent (i.e., the noun/concept the pronoun refers to), whereas in the linguistic tradition, a more computational-like process is used to resolve pronouns, operating solely on syntactical information where a grammatical pronoun is logically linked to its grammatical noun complement. The purpose of my experiment is to understand which of the two traditions reflects the pronoun resolution process in instances where the pronoun-antecedent link is ambiguous.
-
-This experiment will examine how native English-speaking adult subjects (_n_ = 40) resolve ambiguous pronouns, particularly when items of interest undergo property changes in a visual transformation exercise. The experiment is a 2x2 design yielding four conditions. There are 20 target trials and 42 filler trials. Each trial presents a novel 3(_l_)x4(_w_) grid, and its squares are consecutively numbered from 1-12. Six items reside within each grid - two items comprise the target pair (such as two identical books); two items comprise an irrelevant pair of items (such as a lowercase _i_ and uppercase _i_); and two items are unrelated single items (such as a fish and some broccoli). (Some filler trials contain a different set-up.) The subject is positioned to look at the grids on a wide-screen computer monitor. In a given trial, the subject will hear two pre-recorded instructional sentences spoken by a native English speaker. Each sentence instructs the subject to perform an action one of the items within the grid using a computer mouse. The subject's gaze is tracked from sentence onset to action performance in both test sentences of a trial using eye-tracking measurement techniques.
-
-In a critical trial, the first pre-recorded sentence instructs the subject to move one member of the target pair to another area in the grid. Here, the item is referred to by its location relative to the other pair member (e.g., _“Move the book on the **[left/right]** to bin 1”_). Once the subject completes the first action, they hear the second sentence. This sentence instructs them to move one member of the target pair - either the item from the previous sentence or the unmentioned item of the pair - to another area of the grid. The second sentence varies by condition. In two of the four conditions, the target item is referred to by a disambiguating noun phrase (e.g., _“Now, move **[the same/the other]** book to bin 4”_). In the remaining two conditions, the target item is referred to by the indexical pronoun 'it' (_"Now, move it..."_). The indexical pronoun is either disambiguating based on the transformation in the first sentence (e.g., the 'book on the left' was moved in a left-hand bin, thus retaining its identity as 'the book on the left'), or becomes ambiguous based on the first transformation (e.g., 'the book on the left' was moved into a bin to the right of the other book so that its new identity is 'the book on the right'). This ambiguous pronoun condition is of particular interest as the target item's identity changes, and gaze to the old item vs. the new item is hypothesized to shed some light on the memory vs. linguistic traditions of pronoun resolution.
-
-#### Here's a snapshot of a condition 4 (ambiguous) trial, separated by sentence 1 and sentence 2:
-
-![Condition 4](condition4.png)
-
-## Pseudocode
-
-### 1. Experiment Overview
-
-
-```python
 # Experiment contains 62 trials
+
+experiment = trial[0:61]  
+
 
 # 20 critical trials, 42 filler trials
 
@@ -28,12 +10,11 @@ FillerTrials = trial[20:61]    # trials 21-62
 
 # ignore range exclusivity; just showing that there are 62 trials and which trials
 # are criticals/fillers.
-experiment = trial[0:61]  
-```
 
-##### 1.1 | Factors, Conditions, Blocks, and Lists
+#%%
+    #%% 
 
-```python
+# Factors, Conditions, Blocks, and Lists
 
 # Preliminary info
     
@@ -95,11 +76,11 @@ within blocks:
 for participants in experiment:
         shuffle between list[a, b, c, d]
     (such that participant 1 = list[0], participant 2 = list[1], etc.)
-```
 
-##### 1.1 | Grid Layout
+#%%
+    #%%
 
-```python
+# Grid Layout
 
 # Each grid has 12 squares in a 4 (length) × 3 (height) arrangement.
 
@@ -121,13 +102,15 @@ grid1 = "~/experiment/visual/grid1.png"   # (whatever the proper extension for a
 for trial in trial[:62]:
     at onset of each trial:
         load grid[]
-```
 
-### 2. Critical Trials Setup
-
-#### 2.1 | Language
-
-```python
+            
+#%%
+    #%%
+        #%%
+# CRITICAL TRIALS
+#%%        
+        
+# Language - Critical Trials
 #   note: assume that each sentence is being re-assigned with more trial-specific info 
 #   in each step here
 
@@ -209,11 +192,11 @@ output: "Now, move the other plant to bin b."
 # note: I repeat a few lines here later in the script in a single loop 
 # for clarity to concatenate an enture S2 sentence. I'm leaving it here
 # because it's helpful for me to remember exactly how I did it step-by-step!
-```
 
-#### 2.2 | Bin Numbers for S1
+#%%
 
-```python
+# Bin Numbers - Critical Trials - S1
+
 # This one is tricky because I haven't finalized my trial schema.
 # I will have a specific schema for every sentence in every trial of every condition.
 
@@ -308,11 +291,11 @@ for a in trial[].S1cond3:
 
 for a[]c3 in trial[:20].S1cond1:
     replace 'a[]c3' with corresponding string
-```
+    
+#%%
 
-#### 2.3 | Bin Numbers for S2
+# Bin Numbers - Critical Trials - S2 
 
-```python
 # list of bin numbers per condition:
 
 # condition 1
@@ -415,11 +398,12 @@ for x in trial[].S2cond4:
         then:
             for 'b[]c4' in trial[:20].S2cond4:
                 replace 'b[]c4' with corresponding string
-```
 
-#### 2.4 | Putting them all together
 
-```python
+#%%
+
+# Putting Them All Together - Critical Trials
+
 # Concatenating language together for each condition for clarity
 
 # Condition 1
@@ -456,12 +440,13 @@ for x in cond1.trial:
             replace [] with x
 
 # And this will loop through the list to yield the condition-specific sentences.
-```
+            
+#%%
+    #%%
+        #%%
+# FILLER TRIALS
+#%%      
 
-### 3. Filler Trial Setup
-
-
-```python
 # Three filler types
     # A - 2+ same-category items present, but never referred to
     # B - pairs start in different rows (in trials, they must start in same row)
@@ -478,12 +463,11 @@ for participant in experiment:
     within participant-specified list:
         randomize(trials within blocks)
     randomize filler trials throughout experiment
-```
-
-#### 3.1 | Language
-
-
-```python
+    
+#%% 
+            
+# Language - Filler Trials
+    
 # All fillers refer to a different item in each sentence. They aren't referred 
 # to by their locative property relative to other items, but rather by their
 # essential descriptions (e.g., 'paper airplane' vs. 'Boeing 747'.)
@@ -537,12 +521,11 @@ print(trial[20].S1filler)
 output: "Move the paper airplane to bin a."
 print(trial[20].S2filler)
 output: "Now, move the Boeing 747 to bin b."
-```
 
-#### 3.2 | Bin numbers for S1
+#%%
 
+# Bin Numbers - Filler Trials - S1
 
-```python
 # First, build out list of critical trial bin numbers in S1 specific to condition 2:
 # (note: a corresponds to S1, b corresponds to S2)
 
@@ -564,12 +547,11 @@ for a[] in trial[20:62].S1filler:
 
 print(trial[20].S1filler)
 output: "Move the paper airplane to bin 4."
-```
 
-#### 3.3 | Bin numbers for S2
+#%%
 
+# Bin Numbers - Filler Trials - S2
 
-```python
 # First, build out list of critical trial bin numbers in S1 specific to condition 2:
 # (note: a corresponds to S1, b corresponds to S2)
 
@@ -591,12 +573,9 @@ for a[] in trial[20:62].S2filler:
 
 print(trial[20].S2filler)
 output: "Now, move the Boeing 747 to bin 12."
-```
 
-#### 3.4 | Putting them all together
+#%%
 
-
-```python
 # Putting Them All Together - Filler Trials
 
 # Concatenating language for each filler trial for clarity.
@@ -618,14 +597,13 @@ output: "Move the lowercase i to bin 9."
 .
 .
 # ...and so forth for remaining filler trials, if we want to concatenate them for clarity.
-```
 
-### 4. Pre-Recorded Audio
-
-#### 4.1 | For critical trials
-
-
-```python
+#%%
+    #%%
+        #%%
+            
+# TRIGGERING PRE-RECORDED AUDIO FOR EACH SENTENCE - Critical Trials
+            
 # Assign an audio file to each sentence using condition 1, trial 1, sentence 1 as example:
 
 S1trial1cond1audio = "~/experiment/criticalaudio/condition1/trial1.mp4"
@@ -648,12 +626,11 @@ for S2 in trial[:20]:
         wait 1 second
     then 
         trigger S2trial[]cond[]audio 
-```
+        
+#%%
 
-#### 4.2 | For filler trials
+# TRIGGERING PRE-RECORDED AUDIO FOR EACH SENTENCE - Filler Trials
 
-
-```python
 # Assign an audio file to each sentence using trial 21, sentence 1 as example:
 
 S1trial22audio = "~/experiment/filleraudio/trial22.mp4"
@@ -680,12 +657,14 @@ for S2 in trial[20:62]:
         
 # note: I've split critical and filler up for the sake of simpler naming conventions
 # of the audio files.
-```
-
-### 5. Measurement
 
 
-```python
+#%%
+    #%%
+        #%%
+
+# MEASUREMENT
+
 # The experiment will track eye gaze from sentence onset to transformation completion.
             
 for each sentence:
@@ -693,14 +672,22 @@ for each sentence:
         begin eye tracking
     at transformation completion:
         cease session
-```
 
-### 6. For Further Development
+#%%
+    #%%
+        #%%
 
-Further code development needed for:
+# FOR FURTHER DEVELOPMENT
 
-* allowing subject to pick up and drag items
-* recognizing the onset of trial 1, as all other trials are triggered by successful completion of the previous trial
-* identifying a successful trial completion
-* creating instructions at the beginning of the experiment (don't have these yet)
-* briefly flashing translucent bin numbers in a sample grid before trials to show how bins are numbered
+# Further code development needed for:
+
+# allowing subject to pick up and drag items
+# recognizing the onset of trial 1, as all other trials are triggered by successful 
+#    completion of the previous trial
+# identifying a successful trial completion
+# creating instructions at the beginning of the experiment (don't have these yet)
+# briefly flashing translucent bin numbers in a sample grid before trials to show 
+#    how bins are numbered
+
+
+
