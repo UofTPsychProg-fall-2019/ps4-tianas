@@ -96,7 +96,7 @@ for participants in experiment:
 
 
 ```python
-# Specify language for first sentence (S1)
+# Specify language for sentence 1 (S1)
 
 S1 = "Move the x on the [0] to bin a."
 
@@ -120,7 +120,7 @@ print(trial[1].S1)
 output: "Move the x on the right to bin a."
     
 
-# Specify language for S2 by condition
+# Specify language for sentence 2 (S2), by condition
 
 S2cond1 = "Now, move the same x to bin b."
 S2condPro = "Now, move it to bin []."   # same S2 sentence for conditions 2 and 4
