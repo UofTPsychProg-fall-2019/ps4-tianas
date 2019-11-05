@@ -97,7 +97,7 @@ for participants in experiment:
     (such that participant 1 = list[0], participant 2 = list[1], etc.)
 ```
 
-##### 1.1 | Grid Layout
+##### 1.2 | Grid Layout
 
 ```python
 
