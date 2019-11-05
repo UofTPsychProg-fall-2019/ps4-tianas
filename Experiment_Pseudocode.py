@@ -1,4 +1,4 @@
-# Experiment contains 62 trials
+# Experiment contains 62 trials.
 
 experiment = trial[0:61]  
 
