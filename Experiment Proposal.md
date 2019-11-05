@@ -548,7 +548,7 @@ output: "Move the paper airplane to bin 4."
 
 ```
 
-#### 3.2 | Bin numbers for S2
+#### 3.3 | Bin numbers for S2
 
 
 ```python
@@ -577,7 +577,7 @@ output: "Now, move the Boeing 747 to bin 12."
 
 ```
 
-#### 3.3 | Putting them all together
+#### 3.4 | Putting them all together
 
 
 ```python
@@ -692,7 +692,7 @@ for trial in trial[:62]:
         load grid[]
 ```
 
-### 6. Measures
+### 6. Measurement
 
 
 ```python
