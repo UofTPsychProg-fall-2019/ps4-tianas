@@ -11,7 +11,7 @@ In a critical trial, the first pre-recorded sentence instructs the subject to mo
 
 #### Here's a snapshot of a condition 4 (ambiguous) trial, separated by sentence 1 and sentence 2:
 
-![Screen%20Shot%202019-11-05%20at%2012.53.24%20AM.png](attachment:Screen%20Shot%202019-11-05%20at%2012.53.24%20AM.png)
+![Condition 4](condition4.png)
 
 ## Pseudocode
 
