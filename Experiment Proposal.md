@@ -713,4 +713,4 @@ Further code development needed for:
 * recognizing the onset of trial 1, as all other trials are triggered by successful completion of the previous trial
 * identifying a successful trial completion
 * creating instructions at the beginning of the experiment (don't have these yet)
-* briefly flashing a translucent bin numbers in a sample grid before trials to show how bins are numbered
+* briefly flashing translucent bin numbers in a sample grid before trials to show how bins are numbered
